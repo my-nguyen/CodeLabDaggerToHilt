@@ -10,9 +10,19 @@ import com.nguyen.codelabdaggertohilt.R
 import com.nguyen.codelabdaggertohilt.login.LoginActivity
 import com.nguyen.codelabdaggertohilt.registration.RegistrationActivity
 import com.nguyen.codelabdaggertohilt.settings.SettingsActivity
+import com.nguyen.codelabdaggertohilt.user.UserManager
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+    @InstallIn(SingletonComponent::class)
+    @EntryPoint
+    interface UserManagerEntryPoint {
+        fun userManager(): UserManager
+    }
 
     // @Inject annotated fields will be provided by Dagger
     @Inject
@@ -26,8 +36,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Grabs instance of UserManager from the application graph
-        val userManager = (application as MyApplication).appComponent.userManager()
+        val entryPoint = EntryPointAccessors.fromApplication(applicationContext, UserManagerEntryPoint::class.java)
+        val userManager = entryPoint.userManager()
         if (!userManager.isUserLoggedIn()) {
             if (!userManager.isUserRegistered()) {
                 startActivity(Intent(this, RegistrationActivity::class.java))
