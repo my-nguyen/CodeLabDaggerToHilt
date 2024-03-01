@@ -52,4 +52,6 @@ dependencies {
     testImplementation 'android.arch.core:core-testing:1.1.1'
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.44"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.44"
+    implementation "androidx.activity:activity-ktx:1.6.1"
+    implementation 'androidx.fragment:fragment-ktx:1.6.0'
 }

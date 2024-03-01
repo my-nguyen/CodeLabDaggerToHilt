@@ -2,19 +2,17 @@ package com.nguyen.codelabdaggertohilt.registration
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.nguyen.codelabdaggertohilt.R
 import com.nguyen.codelabdaggertohilt.main.MainActivity
 import com.nguyen.codelabdaggertohilt.registration.enterdetails.EnterDetailsFragment
 import com.nguyen.codelabdaggertohilt.registration.termsandconditions.TermsAndConditionsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegistrationActivity : AppCompatActivity() {
-    // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var registrationViewModel: RegistrationViewModel
+    private val registrationViewModel: RegistrationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

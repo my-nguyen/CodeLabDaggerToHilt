@@ -3,21 +3,17 @@ package com.nguyen.codelabdaggertohilt.settings
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.nguyen.codelabdaggertohilt.MyApplication
 import com.nguyen.codelabdaggertohilt.R
 import com.nguyen.codelabdaggertohilt.login.LoginActivity
-import com.nguyen.codelabdaggertohilt.main.MainActivity
 import com.nguyen.codelabdaggertohilt.user.UserManager
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
-    // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var settingsViewModel: SettingsViewModel
+    private val settingsViewModel: SettingsViewModel by viewModels()
     @Inject
     lateinit var userManager: UserManager
 
