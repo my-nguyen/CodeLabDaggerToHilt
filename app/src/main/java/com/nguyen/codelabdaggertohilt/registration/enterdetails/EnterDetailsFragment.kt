@@ -14,8 +14,10 @@ import androidx.lifecycle.Observer
 import com.nguyen.codelabdaggertohilt.R
 import com.nguyen.codelabdaggertohilt.registration.RegistrationActivity
 import com.nguyen.codelabdaggertohilt.registration.RegistrationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class EnterDetailsFragment : Fragment() {
 
     /**
@@ -38,13 +40,6 @@ class EnterDetailsFragment : Fragment() {
     private lateinit var errorTextView: TextView
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        // Grabs the registrationComponent from the Activity and injects this Fragment
-        (activity as RegistrationActivity).registrationComponent.inject(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

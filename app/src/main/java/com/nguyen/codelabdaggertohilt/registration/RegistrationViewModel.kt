@@ -1,7 +1,7 @@
 package com.nguyen.codelabdaggertohilt.registration
 
-import com.nguyen.codelabdaggertohilt.di.ActivityScope
 import com.nguyen.codelabdaggertohilt.user.UserManager
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject
  * @Inject tells Dagger how to provide instances of this type. Dagger also knows
  * that UserManager is a dependency.
  */
-@ActivityScope
+@ActivityScoped
 class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
 
     private var username: String? = null
