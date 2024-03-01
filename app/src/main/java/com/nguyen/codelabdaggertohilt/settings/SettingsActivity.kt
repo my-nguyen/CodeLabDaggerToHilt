@@ -8,20 +8,20 @@ import com.nguyen.codelabdaggertohilt.MyApplication
 import com.nguyen.codelabdaggertohilt.R
 import com.nguyen.codelabdaggertohilt.login.LoginActivity
 import com.nguyen.codelabdaggertohilt.main.MainActivity
+import com.nguyen.codelabdaggertohilt.user.UserManager
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
-
     // @Inject annotated fields will be provided by Dagger
     @Inject
     lateinit var settingsViewModel: SettingsViewModel
+    @Inject
+    lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val entryPoint = EntryPointAccessors.fromApplication(applicationContext, MainActivity.UserManagerEntryPoint::class.java)
-        val userManager = entryPoint.userManager()
-        userManager.userComponent!!.inject(this)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
